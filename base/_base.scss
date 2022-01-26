@@ -1,0 +1,51 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    // this defins what 1rem is {10px} so 10/16 (16px is the default font-size for browser.)
+    font-size: 62.5%; 
+
+
+
+    // @include respond-phone {
+    //     font-size: 50%;          //this is also one way to write @media quaries
+    // }
+
+    
+
+    @include respond(tab-land) {       /*always to put the larger one first because of cascading property "width < 1200 */
+        font-size: 56.25%;             /*we want 1rem to be 9px  so 9/16 = .5625 ie. 56.25%*/
+    }
+
+    @include respond(tab-port) {         /*always to put smaller one below larger one because it will apply "width < 900 */
+        font-size: 50%;                 /*we want 1rem to be 8px  so 8/16 = .5 ie. 50%*/
+    } 
+    
+
+    // @include respond (phone) {          
+    //     font-size: 40%;             
+    // }
+
+    @include respond (big-desktop) {
+        font-size: 75%;                /*we want 1rem to be 12px  so 12/16 = .75 ie. 75%*/
+    }
+}
+
+body {
+    box-sizing: border-box;
+    padding: 3rem;
+
+    @include respond(tab-port) {         
+        padding: 0;                 
+    } 
+}
+
+::selection{
+    background-color: $color-primary;
+    color: $color-white;
+}
